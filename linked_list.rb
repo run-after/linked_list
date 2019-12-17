@@ -31,7 +31,7 @@ class LinkedList
     i = 1
     entry = @head
     until entry == nil
-      entry = entry.next
+      entry = entry.next_node
       i += 1
     end
     return i
@@ -46,10 +46,38 @@ class LinkedList
   end
 
   def at(index)
-
+    entry = @head
+    i = 1
+    if entry == nil
+      return "Index doesn't exist"
+    end 
+    until i == index
+      entry = entry.next_node
+      i += 1
+    end
+    return entry
   end
 
   def pop
+    entry = @head
+    until entry == nil
+      if entry.next_node == @tail
+        @tail = entry
+        @tail.next_node = nil
+      end
+      entry = entry.next_node
+    end
+  end
+  
+  def contains?(value)
+
+  end
+
+  def find(value)
+
+  end
+
+  def to_s
 
   end
 
@@ -62,3 +90,4 @@ class Node
     @next_node = nil
   end
 end
+
