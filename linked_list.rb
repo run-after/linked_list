@@ -27,8 +27,14 @@ class LinkedList
   end
 
   def size
-    i = 0
-    until @tail.next == nil
+    return 0 if @head == nil
+    i = 1
+    entry = @head
+    until entry == nil
+      entry = entry.next
+      i += 1
+    end
+    return i
   end
 
   def head
