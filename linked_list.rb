@@ -70,11 +70,30 @@ class LinkedList
   end
   
   def contains?(value)
-
+    return false if @head == nil
+    i = 1
+    entry = @head
+    until entry == nil
+      entry = entry.next_node
+      if entry == value
+        return true
+      end
+      i += 1
+    end
+    return false
   end
 
   def find(value)
-
+    i = 1
+    entry = @head
+    until entry == nil
+      if entry == value
+        return i
+      end
+      entry = entry.next_node
+      i += 1
+    end
+    return nil
   end
 
   def to_s
