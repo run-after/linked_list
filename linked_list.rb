@@ -24,11 +24,12 @@ class LinkedList
       temp = @head
       @head = value
       @head.next_node = temp
+    end
   end
 
   def size
     return 0 if @head == nil
-    i = 1
+    i = 0
     entry = @head
     until entry == nil
       entry = entry.next_node
@@ -71,23 +72,21 @@ class LinkedList
   
   def contains?(value)
     return false if @head == nil
-    i = 1
     entry = @head
     until entry == nil
-      entry = entry.next_node
-      if entry == value
+      if entry.value == value
         return true
       end
-      i += 1
+      entry = entry.next_node
     end
     return false
   end
 
   def find(value)
-    i = 1
+    i = 0
     entry = @head
     until entry == nil
-      if entry == value
+      if entry.value == value
         return i
       end
       entry = entry.next_node
@@ -97,16 +96,73 @@ class LinkedList
   end
 
   def to_s
+    i = 1
+    entry = @head
+    until entry == nil
+      print "( #{entry.value} ) => "
+      entry = entry.next_node
+      i += 1
+    end
+    print " nil"
+  end
+  ###################### EXTRA CREDIT ####################
+  def insert_at(index)
+
+    
 
   end
+  
+  def remove_at(index)
 
+
+
+  end
 end
 
 class Node
-  attr_accessor :next, :data
+  attr_accessor :next_node, :value
   def initialize(value = nil)
     @value = value
     @next_node = nil
   end
 end
 
+list = LinkedList.new
+list.append(Node.new("A"))
+list.append(Node.new("B"))
+list.append(Node.new("C"))
+list.prepend(Node.new("c"))
+list.prepend(Node.new("b"))
+list.prepend(Node.new("a"))
+
+puts
+puts "list.size:"
+puts list.size
+puts
+puts "list.to_s:"
+puts list.to_s
+puts
+puts "list.contains?(\"C\")"
+puts list.contains?("C")
+puts
+puts "(list.pop)"
+list.pop
+puts
+puts "list.to_s:"
+puts list.to_s
+puts
+puts "list.contains?(\"C\")"
+puts list.contains?("C")
+puts
+puts "list.find(\"B\")"
+puts list.find("B")
+puts
+puts "list.head:"
+p list.head
+puts
+puts "list.tail:"
+p list.tail
+puts
+puts "list.at(3):"
+p list.at(3)
+puts
