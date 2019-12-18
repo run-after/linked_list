@@ -116,13 +116,16 @@ class LinkedList
     new_node.next_node = entry.next_node
     entry.next_node = new_node
     entry = entry.next_node
-
   end
   
   def remove_at(index)
-
-
-
+    i = 0
+    entry = @head
+    while i < index - 1
+      entry = entry.next_node
+      i += 1
+    end
+    entry.next_node = entry.next_node.next_node
   end
 end
 
@@ -145,6 +148,9 @@ list.to_s
 puts
 fresh = Node.new(69)
 list.insert_at(3, fresh)
+list.to_s
+puts
+list.remove_at(3)
 list.to_s
 puts
 =begin
