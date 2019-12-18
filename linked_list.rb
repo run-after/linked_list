@@ -106,9 +106,16 @@ class LinkedList
     print " nil"
   end
   ###################### EXTRA CREDIT ####################
-  def insert_at(index)
-
-    
+  def insert_at(index, new_node)
+    i = 0
+    entry = @head
+    while i < index - 1
+      entry = entry.next_node
+      i += 1
+    end
+    new_node.next_node = entry.next_node
+    entry.next_node = new_node
+    entry = entry.next_node
 
   end
   
@@ -134,7 +141,13 @@ list.append(Node.new("C"))
 list.prepend(Node.new("c"))
 list.prepend(Node.new("b"))
 list.prepend(Node.new("a"))
-
+list.to_s
+puts
+fresh = Node.new(69)
+list.insert_at(3, fresh)
+list.to_s
+puts
+=begin
 puts
 puts "list.size:"
 puts list.size
@@ -166,3 +179,4 @@ puts
 puts "list.at(3):"
 p list.at(3)
 puts
+=end
